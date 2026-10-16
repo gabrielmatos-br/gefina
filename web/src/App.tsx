@@ -10,11 +10,12 @@ export default function App() {
   useEffect(() => {
     async function getInvoices() {
       try {
-        const response = await fetch('/api-learning/invoices');
+        const response = await fetch('/api/invoices');
 
         if (!response.ok) setError('Não foi possivel carregar faturas.');
   
         const datas = await response.json();
+        console.log(datas)
         setInvoices(datas);
       } catch {
         setError('Não foi possivel carregar faturas.');
@@ -22,7 +23,7 @@ export default function App() {
       setLoading(false);
     }
     getInvoices();
-  }, [])
+  }, []);
   if (loading) return <p>Carregando faturas...</p>
   if (error) return <p>{error}</p>
   return <InvoiceTable invoices={invoices} />
