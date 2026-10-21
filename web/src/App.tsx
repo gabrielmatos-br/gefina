@@ -4,17 +4,21 @@ import DashboardPage from './features/dashboard/pages/DashboardPage.tsx';
 import InvoicePage from './features/invoice/pages/InvoicePage.tsx';
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <nav>
-        <Link to="/">Pagina Inicial</Link>
-        <Link to="/faturas">Faturas</Link>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/faturas" element={<InvoicePage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <aside>
+                <header>Gefina</header>
+                <nav>
+                    <ul><li><Link to="/">Pagina Inicial</Link></li></ul>
+                    <ul><li><Link to="/faturas">Faturas</Link></li></ul>
+                </nav>
+            </aside>
+            <main>
+                <Routes>
+                    <Route path="/" element={<DashboardPage />} />
+                    <Route path="/faturas" element={<InvoicePage />} />
+                </Routes>
+            </main>
+        </BrowserRouter>
+    );
 }
