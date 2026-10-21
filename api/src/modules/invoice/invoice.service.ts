@@ -1,4 +1,4 @@
-import pool from "./database.ts";
+import pool from '../../shared/database.ts';
 
 export type InvoiceStatus = 'paid' | 'pending';
 type InvoiceSituation = 'paid' | 'pending' | 'overdue';
@@ -61,26 +61,33 @@ function toInvoice(row: InvoiceRow): Invoice {
     customer: {
       id: row.customer_id,
       name: row.customer_name,
-      email: row.customer_email
-    }
+      email: row.customer_email,
+    },
   };
 }
 
 function toInvoices(rows: InvoiceRow[]): Invoice[] {
   const invoices: Invoice[] = [];
 
-  rows.forEach(invoice => invoices.push(toInvoice(invoice)));
+  rows.forEach((invoice) => invoices.push(toInvoice(invoice)));
 
   return invoices;
 }
 
 export async function findAllInvoices(): Promise<Invoice[]> {
-  const connect = await pool.query<InvoiceRow>(`${baseQuery} ORDER BY invoices.issue_date DESC;`);
+  const connect = await pool.query<InvoiceRow>(
+    `${baseQuery} ORDER BY invoices.issue_date DESC;`,
+  );
   return toInvoices(connect.rows);
 }
 
-export async function findInvoiceById(id: number): Promise<Invoice | undefined> {
-  const connect = await pool.query<InvoiceRow>(`${baseQuery} WHERE invoices.id = $1;`, [id]);
+export async function findInvoiceById(
+  id: number,
+): Promise<Invoice | undefined> {
+  const connect = await pool.query<InvoiceRow>(
+    `${baseQuery} WHERE invoices.id = $1;`,
+    [id],
+  );
 
   if (!connect.rows.length) return undefined;
 
@@ -88,11 +95,15 @@ export async function findInvoiceById(id: number): Promise<Invoice | undefined> 
 }
 
 export async function findRecentInvoice(): Promise<Invoice[]> {
-  const connect = await pool.query(`${baseQuery} ORDER BY invoices.created_at DESC LIMIT 5`)
-  return toInvoices(connect.rows)
+  const connect = await pool.query(
+    `${baseQuery} ORDER BY invoices.created_at DESC LIMIT 5`,
+  );
+  return toInvoices(connect.rows);
 }
 
 export async function findOverdueInvoices(): Promise<Invoice[]> {
-  const connect = await pool.query(`${baseQuery} WHERE invoices.status_ = 'pending' AND invoices.due_date < CURRENT_DATE ORDER BY invoices.due_date LIMIT 5`)
-  return toInvoices(connect.rows)
+  const connect = await pool.query(
+    `${baseQuery} WHERE invoices.status_ = 'pending' AND invoices.due_date < CURRENT_DATE ORDER BY invoices.due_date LIMIT 5`,
+  );
+  return toInvoices(connect.rows);
 }

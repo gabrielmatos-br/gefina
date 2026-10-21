@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import type { Invoice } from "./invoicesType.ts";
-import InvoiceTable from "./InvoiceTable.tsx";
+import { useEffect, useState } from 'react';
+import InvoiceTable from '../components/InvoiceTable.tsx';
+import type { Invoice } from '../invoicesType.ts';
 
 export default function App() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
@@ -27,10 +27,12 @@ export default function App() {
     }
     getInvoices();
   }, []);
-  if (loading) return <p>Carregando faturas...</p>
-  if (error) return <p>{error}</p>
-  return <>
-  <h1>Faturas</h1>
-  <InvoiceTable invoices={invoices} />
-  </>
+  if (loading) return <p>Carregando faturas...</p>;
+  if (error) return <p>{error}</p>;
+  return (
+    <>
+      <h1>Faturas</h1>
+      <InvoiceTable invoices={invoices} />
+    </>
+  );
 }
