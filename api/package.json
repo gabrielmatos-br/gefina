@@ -3,7 +3,7 @@
   "scripts": {
     "check": "tsc --noEmit",
     "start": "node ./server.ts",
-    "dev": "node --watch --env-file=.env ./server.ts"
+    "dev": "node --watch --env-file=.env ./src/server.ts"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
