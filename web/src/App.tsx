@@ -8,7 +8,7 @@ export default function App() {
     <BrowserRouter>
       <aside className='sidebar'>
         <header className='brand'>Gefina</header>
-        <nav>
+        <nav  className='menu'>
           <ul>
             <li>
               <Link to="/">Pagina Inicial</Link>
