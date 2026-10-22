@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router';
+import { BrowserRouter, Link, Route, Routes, NavLink } from 'react-router';
 
 import DashboardPage from './features/dashboard/pages/DashboardPage.tsx';
 import InvoicePage from './features/invoice/pages/InvoicePage.tsx';
@@ -11,12 +11,10 @@ export default function App() {
         <nav  className='menu'>
           <ul>
             <li>
-              <Link to="/">Pagina Inicial</Link>
+              <NavLink to="/">Pagina Inicial</NavLink>
             </li>
-          </ul>
-          <ul>
             <li>
-              <Link to="/faturas">Faturas</Link>
+              <NavLink to="/faturas">Faturas</NavLink>
             </li>
           </ul>
         </nav>
