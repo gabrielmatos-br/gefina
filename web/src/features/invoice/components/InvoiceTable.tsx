@@ -1,4 +1,4 @@
-import type { Invoice } from '../invoicesType.ts'
+import type { Invoice } from '../invoicesType.ts';
 import InvoiceRow from './InvoiceRow.tsx';
 
 interface InvoiceTableProp {
@@ -12,8 +12,8 @@ export default function InvoiceTable(props: InvoiceTableProp) {
         <tr>
           <th>Cliente</th>
           <th>Valor</th>
-          <th>Data de Emissão</th>
-          <th>Data de Vencimento</th>
+          <th className='numeric-date'>Data de Emissão</th>
+          <th className='numeric-date'>Data de Vencimento</th>
           <th>Situação</th>
         </tr>
       </thead>
