@@ -27,14 +27,23 @@
   --text-lg: 1.25rem;
   --text-xl: 1.5rem;
 
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --sidebar-width: 240px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-size: var(--text-base);
-    font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
 }
 
 h1 {
@@ -55,6 +64,35 @@ th {
 
 a {
   color: var(--color-primary);
+}
+
+.sidebar {
+  position: fixed;
+  width: var(--sidebar-width);
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+}
+
+.content {
+  margin-left: var(--sidebar-width);
+  padding: var(--space-6);
+  border: 2px solid var(--color-border);
+}
+
+.brand {
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
 .numeric {

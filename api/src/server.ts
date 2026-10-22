@@ -9,7 +9,13 @@ import pool from './shared/database.ts';
 const app = express();
 const port = Number(process.env.port) || 3000;
 
-const dist = path.join(import.meta.dirname, '..', '..', 'web', 'dist');
+const dist = path.join(
+  import.meta.dirname,
+  '..',
+  '..',
+  'web',
+  'dist',
+);
 
 app.use((request, _response, next) => {
   console.log(`${request.method} ${request.url}`);
