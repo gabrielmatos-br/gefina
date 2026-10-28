@@ -1,8 +1,8 @@
 {
-  "name": "practice-gefina",
+  "name": "gefina",
   "version": "0.2.0",
   "description": "Sistema de gestão de contas a receber.",
-  "author": "Gabriel Matos",
+  "author": "Alex Bessa",
   "scripts": {
     "check": "biome check ./",
     "fix": "biome check --write ./",
