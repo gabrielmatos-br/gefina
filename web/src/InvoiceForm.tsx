@@ -33,10 +33,8 @@ export default function InvoiceForm(props: InvoiceFormProps) {
     }
 
     return <form onSubmit={handleSubmit}>
-        <h2></h2>
-
-        // Formulário
-        <div>
+        <h2>{!props.invoice ? 'Criar Fatura' : 'Editar Fatura'}</h2>
+        <div className="field">
             <label htmlFor="customer">Cliente</label>
             <select
                 id="customer"
@@ -52,7 +50,7 @@ export default function InvoiceForm(props: InvoiceFormProps) {
 
             </select>
         </div>
-        <div>
+        <div className="field">
             <label htmlFor="amount">Valor</label>
             <input
                 id="amount"
@@ -64,42 +62,43 @@ export default function InvoiceForm(props: InvoiceFormProps) {
                 required
             />
         </div>
-        <div>
-            <label htmlFor="status">Situação</label>
-            <select
-                id="status"
-                value={status}
-                onChange={(event) => setStatus(event.target.value as InvoiceStatus)}
-            >
-                <option value="pending">Pendente</option>
-                <option value="paid">Paga</option>
-            </select>
-        </div>
-        <div>
-            <label htmlFor="issueDate">Emissão</label>
-            <input
-                id="issueDate"
-                type="date"
-                value={issueDate}
-                onChange={(event) => setIssueDate(event.target.value)}
-                required
-            />
-        </div>
-        <div>
-            <label htmlFor="dueDate">Vencimento</label>
-            <input
-                id="dueDate"
-                type="date"
-                value={dueDate}
-                onChange={(event) => setDueDate(event.target.value)}
-                required
-            />
+        <div className="horizontal-fields">
+            <div className="field">
+                <label htmlFor="status">Situação</label>
+                <select
+                    id="status"
+                    value={status}
+                    onChange={(event) => setStatus(event.target.value as InvoiceStatus)}
+                >
+                    <option value="pending">Pendente</option>
+                    <option value="paid">Paga</option>
+                </select>
+            </div>
+            <div className="field">
+                <label htmlFor="issueDate">Emissão</label>
+                <input
+                    id="issueDate"
+                    type="date"
+                    value={issueDate}
+                    onChange={(event) => setIssueDate(event.target.value)}
+                    required
+                />
+            </div>
+            <div className="field">
+                <label htmlFor="dueDate">Vencimento</label>
+                <input
+                    id="dueDate"
+                    type="date"
+                    value={dueDate}
+                    onChange={(event) => setDueDate(event.target.value)}
+                    required
+                />
+            </div>
         </div>
 
-        {!props.error ? null : <p>{props.error}</p>}
+        {!props.error ? null : <p className="form-error">{props.error}</p>}
 
-        // Botões
-        <div>
+        <div className='form-actions'>
             {!props.invoice ? null : <button
                 type="button"
                 disabled={props.busy}
@@ -109,6 +108,7 @@ export default function InvoiceForm(props: InvoiceFormProps) {
             </button>}
 
             <button
+                className='button-secondary'
                 type='button'
                 disabled={props.busy}
                 onClick={props.onCancel}
@@ -117,6 +117,7 @@ export default function InvoiceForm(props: InvoiceFormProps) {
             </button>
 
             <button
+                className='button-primary'
                 type='submit'
                 disabled={props.busy}
             >
