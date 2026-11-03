@@ -6,10 +6,10 @@ import fs from 'node:fs';
 import pool from './database.ts';
 
 import dashboard from './dashboard.route.ts';
+import customers from './customer.route.ts'
 import invoices from './invoice.route.ts';
 
 import handleError from './error.middleware.ts';
-import { error } from 'node:console';
 
 const app = express();
 app.use(express.json());
@@ -40,6 +40,7 @@ app.get('/api/health', async (_request, response) => {
 });
 
 app.use('/api/dashboard', dashboard);
+app.use('/api/customers', customers);
 app.use('/api/invoices', invoices);
 
 app.use(express.static(dist));

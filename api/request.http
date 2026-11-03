@@ -3,8 +3,11 @@
 ### Verificar saúde
 GET {{host}}/api/health
 
-### Buscar métricas
+### Consultar métricas
 GET {{host}}/api/dashboard
+
+### Buscar opções de clientes
+GET {{host}}/api/customers/options
 
 ### Buscar faturas
 GET {{host}}/api/invoices
