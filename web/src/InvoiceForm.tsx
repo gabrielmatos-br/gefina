@@ -1,4 +1,4 @@
-import { useState, type SubmitEvent } from "react"
+import { useState, type SetStateAction, type SubmitEvent } from "react"
 
 import type { Invoice, InvoiceInput, InvoiceStatus } from './invoiceType.ts';
 import type { CustomerOption } from './customerType.ts';
@@ -8,6 +8,9 @@ interface InvoiceFormProps {
     customers: CustomerOption[];
     error: string | null;
     onDelete: () => void;
+    confirmDelete: boolean
+    setConfirmDelete: React.Dispatch<SetStateAction<boolean>>;
+    confirm: () => void;
     onCancel: () => void;
     onSubmit: (values: InvoiceInput) => void;
     busy: boolean;
@@ -101,11 +104,12 @@ export default function InvoiceForm(props: InvoiceFormProps) {
 
         <div className='form-actions'>
             {!props.invoice ? null : <button
+                className="button-danger"
                 type="button"
                 disabled={props.busy}
                 onClick={props.onDelete}
             >
-                Excluir
+                {props.busy && props.confirmDelete ? 'Excluindo...' : 'Excluir'}
             </button>}
 
             <button
@@ -122,8 +126,30 @@ export default function InvoiceForm(props: InvoiceFormProps) {
                 type='submit'
                 disabled={props.busy}
             >
-                {props.busy ? 'Salvando...' : 'Salvar'}
+                {props.busy && !props.confirmDelete ? 'Salvando...' : 'Salvar'}
             </button>
         </div>
+
+       { props.confirmDelete && <div className="confirm-form">
+            <p>A exclusão é definitiva e não pode ser desfeita. Deseja prosseguir?</p>
+
+            <button
+                className="button-secondary"
+                type="button"
+                disabled={props.busy}
+                onClick={() => props.setConfirmDelete(false)}
+            >
+                Não
+            </button>
+
+            <button
+                className="button-danger"
+                type="button"
+                disabled={props.busy}
+                onClick={props.confirm}
+            >
+                Sim
+            </button>
+        </div>}
     </form>
 }
