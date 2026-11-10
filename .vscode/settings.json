@@ -23,7 +23,7 @@
   "editor.scrollbar.horizontal": "hidden",
   "editor.stickyScroll.enabled": false,
   "editor.minimap.autohide": "scroll",
-  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontSize": 10,
   "terminal.integrated.cursorStyleInactive": "none",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.smoothScrolling": true,
