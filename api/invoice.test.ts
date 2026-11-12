@@ -6,11 +6,11 @@ import prisma from './prisma.ts';
 
 const user = {
     id: 0,
-    email: 'users@teste.com.br'
+    email: 'user@teste.com.br'
 };
 const customer = {
     id: 0,
-    email: 'clients@teste.com.br'
+    email: 'client@teste.com.br'
 };
 const invoice = { id: 0 }
 
