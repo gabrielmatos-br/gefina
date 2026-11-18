@@ -34,48 +34,50 @@ export default function DashboardPage() {
     getDashboard();
   }, []);
 
-  if (loading) return <p>Carregando painel inicial...</p>;
+  if (loading) return <p className='text-xl font-semibold text-text-muted uppercase'>Carregando...</p>;
 
-  if (error || dashboard === null) return <p>{error}</p>;
+  if (error || dashboard === null) return <p className='text-overdue'>{error}</p>;
 
   return (
     <>
-      <h1>Painel Inicial</h1>
+      <h1 className='text-xl font-semibold mb-7 uppercase'>Painel Inicial</h1>
 
-      <div className="summary-cards">
+      <div className='flex gap-4'>
         <SummaryCard
-          label="Total recebido:"
+          label='Total recebido:'
           value={formatCurrency(dashboard.totals.paid)}
         />
         <SummaryCard
-          label="Total pendente:"
+          label='Total pendente:'
           value={formatCurrency(dashboard.totals.pending)}
         />
         <SummaryCard
-          label="Faturas:"
+          label='Faturas:'
           value={String(dashboard.totals.invoiceCount)}
         />
         <SummaryCard
-          label="Clientes"
+          label='Clientes'
           value={String(dashboard.totals.customerCount)}
         />
       </div>
 
-      <div className="summary-tables">
+      <div className='flex gap-6 mt-8'>
         <InvoiceSummaryTable
-          title="Faturas recentes"
-          dateLabel="Emissão"
+          title='Faturas recentes'
+          dateLabel='Emissão'
           invoices={dashboard.recentInvoices}
           date={(invoice) => invoice.issueDate}
         />
 
         <InvoiceSummaryTable
-          title="Faturas atrasadas"
-          dateLabel="Vencimento"
+          title='Faturas atrasadas'
+          dateLabel='Vencimento'
           invoices={dashboard.overdueInvoices}
           date={(invoice) => invoice.dueDate}
         />
       </div>
+
+      <small className='fixed bottom-0 left-[calc(50%+120px)] -translate-x-1/2'>&copy; 2026. Gefina - Gestor Financeiro simples e eficiente.</small>
     </>
   );
 }
