@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import { invoiceSchema, toFieldErrors } from '../schemas/invoice.schema.ts';
+import {
+  invoiceSchema,
+  toFieldErrors,
+} from '../schemas/invoice.schema.ts';
 import {
   findAllInvoices,
   findInvoiceById,

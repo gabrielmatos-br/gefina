@@ -2,19 +2,17 @@ import fs from 'node:fs';
 
 import path from 'node:path';
 import express from 'express';
-
-import invoices from '../src/routes/invoice.route.ts';
-import dashboard from '../src/routes/dashboard.route.ts';
-import customers from '../src/routes/customer.route.ts';
-
 import handleError from '../src/middlewares/error.middleware.ts';
+import customers from '../src/routes/customer.route.ts';
+import dashboard from '../src/routes/dashboard.route.ts';
+import invoices from '../src/routes/invoice.route.ts';
 
 import prisma from './prisma.ts';
 
 const app = express();
 app.use(express.json());
 
-const dist = path.join(import.meta.dirname, '..', 'web', 'dist');
+const dist = path.join(import.meta.dirname, '..', '..', 'web', 'dist');
 
 app.use((request, _response, next) => {
   console.log(`${request.method} ${request.url}`);
