@@ -2,11 +2,13 @@ import fs from 'node:fs';
 
 import path from 'node:path';
 import express from 'express';
-import customers from './customer.route.ts';
 
-import dashboard from './dashboard.route.ts';
-import handleError from './error.middleware.ts';
-import invoices from './invoice.route.ts';
+import invoices from '../src/routes/invoice.route.ts';
+import dashboard from '../src/routes/dashboard.route.ts';
+import customers from '../src/routes/customer.route.ts';
+
+import handleError from '../src/middlewares/error.middleware.ts';
+
 import prisma from './prisma.ts';
 
 const app = express();
