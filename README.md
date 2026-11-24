@@ -21,4 +21,4 @@ O Gefina registra os clientes de uma organização e as faturas emitidas contra 
 
 ---
 
-Acesse: https://gefina-zrcq.onrender.com
+Acesse: https://gmbr-gefina.onrender.com
